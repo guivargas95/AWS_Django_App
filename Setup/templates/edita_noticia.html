@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/header.html' %}
+<main>
+    {% include 'partials/_menu_noticia.html' %}
+    <!-- ##### Contact Form Area Start ##### -->
+    <div class="contact-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading mt-3">
+                        <h3>Crie sua noticia, {{ user.username }} :)</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="contact-form-area">
+                        <form action="{% url 'atualiza_noticia' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" id="noticia_id" class="form-control" name="noticia_id"
+                                value="{{noticia.id}}" hidden>
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-12 col-lg-12">
+                                        <label for="titulo_noticia"><b>Título da notícia</b></label>
+                                        <input type="text" id="titulo_noticia" class="form-control"
+                                            name="titulo_noticia" placeholder="Ex. Previsão do tempo" value="{{noticia.titulo_noticia}}" required>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <label for="file"><b>Prévia da notícia</b></label>
+                                        <textarea class="form-control" name="previa_noticia" cols="30" rows="3"
+                                            placeholder="Ex. Veja a previsão do tempo de Curitiba" required>{{noticia.previa_noticia}}</textarea>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <label for="file"><b>Texto da notícia</b></label>
+                                        <textarea class="form-control" name="texto_noticia" cols="30" rows="10"
+                                            required>{{noticia.texto_noticia}}</textarea>
+                                    </div>
+                                    <div class="col-12 col-lg-3 mt-3">
+                                        <label for="file"><b>Categoria da notícia</b></label>
+                                        <input type="text" class="form-control" name="categoria_noticia"
+                                            placeholder="Ex. Tecnologia" value="{{noticia.categoria_noticia}}" required>
+                                    </div>
+                                    <div class="col-12 col-lg-3 mt-3">
+                                        <label for="file"><b>Foto</b></label>
+                                        <input type="file" class="form-control" name="foto_noticia">
+                                    </div>
+                                    <div class="col-12 text-center mt-3">
+                                        <button class="btn btn-success mt-3 mb-3" type="submit" required>Editar sua
+                                            notícia</button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% include 'partials/footer.html' %}
+</main>
+</body>
+
+</html>
+
+{% endblock %}

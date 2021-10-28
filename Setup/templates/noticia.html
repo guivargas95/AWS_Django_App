@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/header.html' %}
+
+{% include 'partials/_menu_noticia.html' %}
+
+<!-- Conteudo da notícia -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="receipe-slider owl-carousel img-size">
+                {% if noticia.foto_noticia == '' %}
+                <img src="{% static 'img/sem_imagem.png' %}" class="img-fluid" alt="Responsive image">
+                {% else %}
+                <img src="{{ noticia.foto_noticia.url }}" class="img-fluid" alt="Responsive image">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <h1 class="h2 mt-3 mb-3">{{ noticia.titulo_noticia }}</h1>
+        <p class="mb-3 mt-3">{{ noticia.texto_noticia }}</p>
+    </div>
+</div>
+{% include 'partials/footer.html' %}
+
+{% endblock %}

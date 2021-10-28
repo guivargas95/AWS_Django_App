@@ -1,0 +1,77 @@
+{% load static %}
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light faixa1 fixed-top">
+        <div class="container-fluid d-flex ">
+            <a class="navbar-brand logo " href="#">Guilherme Vargas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <ul class="navbar-nav teste">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">INÍCIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bem vindo, {{ user.username }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">INÍCIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cadastro' %}">REGISTRO</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section>
+    <div id="carouselExampleIndicators" class="carousel slide carousel-height" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'img/banner.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/banner2.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/banner4.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>

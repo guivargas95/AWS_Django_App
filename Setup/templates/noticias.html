@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/header.html' %}
+<main>
+    {% include 'partials/_menu_noticia.html' %}
+
+
+    <nav class="navbar navbar-light bg-light justify-content-center">
+        <form class="form-inline" action="{% url 'buscar' %}">
+            <div class="col text-center">
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+            </div>
+            <input class="form-control mr-sm-2 mt-1" type="search" placeholder="Search" aria-label="Search" name="buscar">
+        </form>
+    </nav>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if noticias %}
+            {% for noticia in noticias %}
+            <div class="card p-0 m-4 col-12 col-md-2 img-format" style="width: 18rem;">
+                {% if noticia.foto_noticia == '' %}
+                <a href="{% url 'noticia' noticia.id %}"><img src="{% static 'img/sem_imagem.png' %}"
+                        class="card-img-top card-posicao-imagem" alt="..."></a>
+                {% else %}
+                <a href="{% url 'noticia' noticia.id %}"><img src="{{ noticia.foto_noticia.url }}"
+                        class="card-img-top card-posicao-imagem" alt="..."></a>
+                {% endif %}
+                <div class="card-body text-center">
+                    <a href="{% url 'noticia' noticia.id %}">
+                        <h5 class="card-title fs-4">{{ noticia.titulo_noticia }}</h5>
+                    </a>
+                    <p class="card-text">{{ noticia.previa_noticia }}</p>
+                    <p class="card-text mt-3">Por: {{ noticia.pessoa }}</p>
+                    <a href="{% url 'noticia' noticia.id %}" class="btn btn-success m-2 mt-4">Ver notícia!</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+
+
+    {% include 'partials/footer.html' %}
+</main>
+</body>
+
+</html>
+
+{% endblock %}
