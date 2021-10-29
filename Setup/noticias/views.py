@@ -90,16 +90,14 @@ def atualiza_noticia(request):
 def buscar_dashboard(request):
     '''Realiza busca das noticias do usuario logado pelo título''' 
 
-    lista_noticias = Noticias.objects.filter(pessoa=User.username)
+    lista_noticias = Noticias.objects.order_by('-data_noticia').filter(pessoa=id)
 
     if 'buscar' in request.GET:
         nome_a_buscar = request.GET['buscar']
         if nome_a_buscar != '':
             lista_noticias = lista_noticias.filter(titulo_noticia__contains=nome_a_buscar)
         else:
-            lista_noticias = lista_noticias.objects.order_by('-data_noticia').filter(publicada=True)
-
-
+            lista_noticias = lista_noticias.objects.order_by('-data_noticia')
     dados = {
         'noticias' : lista_noticias
     }
@@ -116,7 +114,7 @@ def buscar(request):
         if nome_a_buscar != '':
             lista_noticias = lista_noticias.filter(titulo_noticia__contains=nome_a_buscar)
         else:
-            lista_noticias = lista_noticias.objects.order_by('-data_noticia')
+            lista_noticias = Noticias.objects.all()
     dados = {
         'noticias' : lista_noticias
     }

@@ -6,16 +6,15 @@
 <main>
     {% include 'partials/_menu_noticia.html' %}
 
+    <nav class="navbar navbar-light bg-light position-relative">
+        <div class="container-fluid justify-content-center">
+            <form class="d-flex" action="{% url 'buscar' %}">
+                <input class="form-control me-2 text" type="search" name="buscar" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
 
-    <nav class="navbar navbar-light bg-light justify-content-center">
-        <form class="form-inline" action="{% url 'buscar' %}">
-            <div class="col text-center">
-                <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
-            </div>
-            <input class="form-control mr-sm-2 mt-1" type="search" placeholder="Search" aria-label="Search" name="buscar">
-        </form>
+            </form>
+        </div>
     </nav>
-
 
     <div class="container">
         <div class="row justify-content-center">
