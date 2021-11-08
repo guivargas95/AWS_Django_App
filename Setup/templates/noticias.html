@@ -40,6 +40,11 @@
             </div>
             {% endfor %}
             {% else %}
+            <div class="col text-center mt-3">
+                <h1 class="h2">Nenhuma notícia encontrada! :( </h1>
+                <p class="mt-3">Você pode começar <a href="{% url 'cria_noticia' %}">Criando uma notícia!</a></p>
+            </div>
+            <a href="#" class="btn btn-success ajustar-footer">Criar notícia</a>
             {% endif %}
         </div>
     </div>
