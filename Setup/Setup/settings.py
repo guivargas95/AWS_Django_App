@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-34*vtv1inti2_081&09fn)8$lh+)uc9g2p+=h^4_jm%8gu+!)1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-portfolio-env.eba-jef62pte.us-west-2.elasticbeanstalk.com', '127.0.0.1']
 
 
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'portfolio',
         'USER': 'guivargas95',
-        'PASSWORD': '',
+        'PASSWORD': 'Dv41277mx!',
         'HOST': 'django-portfolio-app.cxqllxiw6zdl.sa-east-1.rds.amazonaws.com',
         'PORT': '5432',
     }
