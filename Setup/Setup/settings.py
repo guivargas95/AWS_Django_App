@@ -96,7 +96,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'portfolio',
             'USER': 'guivargas95',
-            'PASSWORD': 'Dv41277mx!',
+            'PASSWORD': '',
             'HOST': 'django-portfolio-app.cxqllxiw6zdl.sa-east-1.rds.amazonaws.com',
             'PORT': '5432'
         }
