@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
 
@@ -26,7 +27,8 @@ SECRET_KEY = 'django-insecure-34*vtv1inti2_081&09fn)8$lh+)uc9g2p+=h^4_jm%8gu+!)1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-portfolio-env.eba-jef62pte.us-west-2.elasticbeanstalk.com', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'guivargas-env.eba-2nt38qfw.sa-east-1.elasticbeanstalk.com', '127.0.0.1']
 
 
 # Application definition
@@ -77,16 +79,28 @@ WSGI_APPLICATION = 'Setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'portfolio',
-        'USER': 'guivargas95',
-        'PASSWORD': 'Dv41277mx!',
-        'HOST': 'django-portfolio-app.cxqllxiw6zdl.sa-east-1.rds.amazonaws.com',
-        'PORT': '5432',
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['portfolio'],
+            'USER': os.environ['guivargas95'],
+            'PASSWORD': os.environ[''],
+            'HOST': os.environ['django-portfolio-app.cxqllxiw6zdl.sa-east-1.rds.amazonaws.com'],
+            'PORT': os.environ['5432'],
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'portfolio',
+            'USER': 'guivargas95',
+            'PASSWORD': 'Dv41277mx!',
+            'HOST': 'django-portfolio-app.cxqllxiw6zdl.sa-east-1.rds.amazonaws.com',
+            'PORT': '5432'
+        }
+    }
 
 
 # Password validation
@@ -128,7 +142,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Setup/static' )
+    os.path.join(BASE_DIR, 'Setup/static')
 ]
 
 # Default primary key field type
@@ -136,13 +150,12 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#PATH para as imagens
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media' )
+# PATH para as imagens
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Messages
 
-from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success',
