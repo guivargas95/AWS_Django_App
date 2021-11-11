@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/header.html' %}
+<main>
+    <div class="container text-center mt-2 mb-2">
+        <img src="{% static 'img/em_breve.png' %}" class="img-fluid" alt="Responsive image">
+    </div>
+
+    {% include 'partials/footer.html' %}
+</main>
+</body>
+
+</html>
+
+{% endblock %}

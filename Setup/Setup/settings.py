@@ -94,11 +94,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'portfolio',
-            'USER': 'guivargas95',
-            'PASSWORD': '',
-            'HOST': 'django-portfolio-app.cxqllxiw6zdl.sa-east-1.rds.amazonaws.com',
-            'PORT': '5432'
+            'NAME': 'blog',
+            'USER': 'postgres',
+            'PASSWORD': '123456',
+            'HOST': 'localhost',
         }
     }
 

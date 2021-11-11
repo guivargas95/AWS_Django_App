@@ -7,3 +7,6 @@ def index(request):
 
 def contato(request):
     pass
+
+def em_breve(request):
+    return render(request, 'em_breve.html')
