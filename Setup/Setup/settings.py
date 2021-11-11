@@ -85,7 +85,7 @@ if 'RDS_HOSTNAME' in os.environ:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ['portfolio'],
             'USER': os.environ['guivargas95'],
-            'PASSWORD': os.environ[''],
+            'PASSWORD': os.environ['test'],
             'HOST': os.environ['django-portfolio-app.cxqllxiw6zdl.sa-east-1.rds.amazonaws.com'],
             'PORT': os.environ['5432'],
         }
