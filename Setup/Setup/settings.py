@@ -151,7 +151,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # PATH para as imagens
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/home/guivargas95/Setup/media/'
 MEDIA_URL = '/media/'
 
 # Messages
