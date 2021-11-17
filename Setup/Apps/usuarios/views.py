@@ -31,7 +31,7 @@ def cadastro(request):
         messages.success(request, 'Usuário cadastrado com sucesso!')
         return redirect('login')
     else:
-        return render(request, 'cadastro.html')
+        return render(request, 'usuarios/cadastro.html')
 
 def login(request):
     '''Realiza o login de uma pessoa no sistema'''
@@ -40,7 +40,7 @@ def login(request):
         senha = request.POST['senha']
         if email == "" or senha == "":
             messages.error(request, 'Os campos email e senha não podem ficar em branco')
-            return redirect('login')
+            return redirect('usuarios/login')
         if User.objects.filter(email=email).exists():
             nome = User.objects.filter(email=email).values_list('username', flat=True).get()
             user = auth.authenticate(request, username=nome, password=senha)
@@ -54,7 +54,7 @@ def login(request):
             
         
 
-    return render(request, 'login.html')
+    return render(request, 'usuarios/login.html')
 
 def logout(request):
     '''Realiza o logout de uma pessoa no sistema'''

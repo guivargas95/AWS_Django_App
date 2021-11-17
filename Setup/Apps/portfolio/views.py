@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'portfolio/index.html')
 
 
 def contato(request):
     pass
 
 def em_breve(request):
-    return render(request, 'em_breve.html')
+    return render(request, 'portfolio/em_breve.html')

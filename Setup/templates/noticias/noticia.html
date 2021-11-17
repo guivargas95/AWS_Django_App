@@ -7,7 +7,7 @@
 {% include 'partials/_menu_noticia.html' %}
 
 <!-- Conteudo da notícia -->
-<div class="container">
+<div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-12">
             <div class="receipe-slider owl-carousel img-size">
@@ -20,8 +20,8 @@
         </div>
     </div>
     <div class="text-center">
-        <h1 class="h2 mt-3 mb-3">{{ noticia.titulo_noticia }}</h1>
-        <p class="mb-3 mt-3">{{ noticia.texto_noticia }}</p>
+        <h1 class="h2 mt-3 mb-5">{{ noticia.titulo_noticia }}</h1>
+        <p class="mb-5 mt-3">{{ noticia.texto_noticia }}</p>
     </div>
 </div>
 {% include 'partials/footer.html' %}

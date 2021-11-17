@@ -3,38 +3,43 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-light faixa1 fixed-top">
         <div class="container-fluid d-flex ">
-            <a class="navbar-brand logo " href="#">Guilherme Vargas</a>
+            <a class="navbar-brand logo " href="{% url 'index' %}">Guilherme Vargas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-                <ul class="navbar-nav teste">
+            <div class="collapse navbar-collapse  justify-content-end" id="navbarNav">
+                <ul class="navbar-nav teste ">
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">INÍCIO</a>
+                    <li class="nav-item mr-5">
+                        <a class="nav-link bg-dark" href="#">Bem vindo, {{ user.username }}!</a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-primary" href="{% url 'index' %}">INÍCIO</a>
+                    </li>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link" href="#">CONTATO</a>
                     </li>
+                    -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+                        <a class="nav-link text-primary" href="{% url 'logout' %}">LOGOUT</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Bem vindo, {{ user.username }}</a>
-                    </li>
+                    
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">INÍCIO</a>
+                        <a class="nav-link text-primary" href="{% url 'index' %}">INÍCIO</a>
                     </li>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link" href="#">CONTATO</a>
                     </li>
+                    -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                        <a class="nav-link text-primary" href="{% url 'login' %}">LOGIN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cadastro' %}">REGISTRO</a>
+                        <a class="nav-link text-primary" href="{% url 'cadastro' %}">REGISTRO</a>
                     </li>
                     {% endif %}
                 </ul>

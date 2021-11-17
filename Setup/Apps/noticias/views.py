@@ -12,7 +12,7 @@ def noticias(request, ):
         'noticias' : noticias
     }
 
-    return render(request, 'noticias.html', dados)
+    return render(request, 'noticias/noticias.html', dados)
 
 
 def noticia(request, noticia_id):
@@ -22,7 +22,7 @@ def noticia(request, noticia_id):
     noticia_a_exibir = {
         'noticia' : noticia
     }
-    return render(request, 'noticia.html', noticia_a_exibir)
+    return render(request, 'noticias/noticia.html', noticia_a_exibir)
 
 def dashboard(request):
     '''Mostra o dashboard da pessoa logada no sistema'''
@@ -33,7 +33,7 @@ def dashboard(request):
         dados = {
             'noticias' : noticia
         }
-        return render(request, 'dashboard.html', dados)
+        return render(request, 'noticias/dashboard.html', dados)
     else:
         messages.error(request, 'Você precisa estar autenticado para visualizar seu dashboard!')
         return redirect('login')
@@ -56,7 +56,7 @@ def cria_noticia(request):
             noticia.save()
             return redirect('dashboard')
         else:
-            return render(request, 'cria_noticia.html')
+            return render(request, 'noticias/cria_noticia.html')
     else:
         messages.error(request, 'Você precisa estar autenticado para criar notícias!')
         return redirect('login')
@@ -71,7 +71,7 @@ def edita_noticia(request, noticia_id):
     '''Edita a noticia selecionada'''
     noticia = get_object_or_404(Noticias, pk=noticia_id)
     noticia_a_editar = {'noticia': noticia}
-    return render(request, 'edita_noticia.html', noticia_a_editar)
+    return render(request, 'noticias/edita_noticia.html', noticia_a_editar)
 
 def atualiza_noticia(request):
     '''Atualiza a noticia selecionada'''
@@ -102,7 +102,7 @@ def buscar_dashboard(request):
         'noticias' : lista_noticias
     }
 
-    return render(request, 'buscar.html', dados)
+    return render(request, 'noticias/buscar.html', dados)
 
 def buscar(request):
     '''Realiza busca de todas as noticias pelo título''' 
@@ -119,5 +119,5 @@ def buscar(request):
         'noticias' : lista_noticias
     }
 
-    return render(request, 'buscar.html', dados)
+    return render(request, 'noticias/buscar.html', dados)
 
