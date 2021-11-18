@@ -2,18 +2,20 @@ from .models import Noticias
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def noticias(request, ):
     '''Exibe a página de todas as noticias cadastradas'''    
     noticias = Noticias.objects.all()
-
+    paginator = Paginator(noticias, 6)
+    page = request.GET.get('page')
+    noticias_por_pagina = paginator.get_page(page)
     dados = {
-        'noticias' : noticias
+        'noticias' : noticias_por_pagina
     }
 
     return render(request, 'noticias/noticias.html', dados)
-
 
 def noticia(request, noticia_id):
     '''Exibe a página da noticia selecionada'''
